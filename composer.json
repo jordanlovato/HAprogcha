@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
 				"laravelcollective/html": "5.2.*",
-        "jenssegers/mongodb": "v3.0.0-beta"
+        "jenssegers/mongodb": "v3.0.0-beta",
+				"ext-mongo": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
