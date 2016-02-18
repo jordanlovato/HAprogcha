@@ -19,7 +19,6 @@
     },
     "autoload": {
         "classmap": [
-						"app/Models",
             "database"
         ],
         "psr-4": {
