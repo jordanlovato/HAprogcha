@@ -39,7 +39,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-			$this->validate_and_save($request, new \App\Models\Contact());
+			$this->validate_and_save($request, new \App\Models\Contact(), 'contact/create');
 			return redirect('contact');
     }
 
@@ -52,7 +52,7 @@ class ContactController extends Controller
     public function show($id)
     {
 			// display a specific contact's profile
-			return view('contact.index', ['contacts' => \App\Models\Contact::find($id)]);
+			return view('contact.show', ['contact' => \App\Models\Contact::find($id)]);
     }
 
     /**
@@ -64,7 +64,7 @@ class ContactController extends Controller
     public function edit($id)
     {
 			// display a specific contact for editing
-			return view('contact.index', ['contacts' => \App\Models\Contact::find($id)]);
+			return view('contact.edit', ['contact' => \App\Models\Contact::find($id)]);
     }
 
     /**
@@ -76,7 +76,14 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // do the update
+			// find our boy
+			$contact = \App\Models\Contact::find($id);
+			// make our redirect for post-processing
+			$redirect = 'contact/'.$id.'/edit';
+			// do the thing!
+			$this->validate_and_save($request, $contact, $redirect);
+			// bring her home
+			return redirect($redirect);
     }
 
     /**
@@ -88,9 +95,12 @@ class ContactController extends Controller
     public function destroy($id)
     {
         // destroy a user
+				$contact = \App\Models\Contact::find($id);
+				$contact->delete();
+				redirect('contact/');
     }
 
-		private function validate_and_save(Request $r, \App\Models\Contact $c)
+		private function validate_and_save(Request $r, \App\Models\Contact $c, $redirect = 'contact/')
 		{
 			// Do validation checks
 			$validator = Validator::make($r->all(), [
@@ -119,7 +129,7 @@ class ContactController extends Controller
 			// supply errors to laravel if validation fails
 			if ($validator->fails())
 			{
-				return redirect('contact/create')
+				return redirect($redirect)
 					->withErrors($validator)
 					->withInput();
 			}
