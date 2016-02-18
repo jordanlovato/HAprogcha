@@ -22,6 +22,7 @@ I used Homestead as means to install/develop this application. I'm going to eage
 
 6) install mongodb `sudo apt-get install -y mongodb-org`
 
+7) cd into the approot and run `php artisan serve` hit `localhost:8000` in your browser
 
 ##Tips##
 * You might need to create a `.env` file in your project directory. Use the `.env.example` file as a base and delete all database information (or supply it if your mongodb requires auth).
