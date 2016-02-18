@@ -1,10 +1,16 @@
 # HAprogcha
 ## Installation Instructions
 
-I used Homebrew as means to install/develop this application. I'm going to gracefully assume you're doing the same, but if you are not, any Linux, Nginx, PHP stack should work fine, simply substitute the pacakge manager commands (eg `apt` for `yum` or `emerge`)
+I used Homestead as means to install/develop this application. I'm going to eagerly assume you're doing the same, but if you are not, any Linux, Nginx, PHP stack should work fine, simply substitute the pacakge manager commands (eg `apt` for `yum` or `emerge`). I also tested on a Linux/PHP/Mongo stack running `php -S localhost:YOURFAVPORT` and it worked fine.
 
+
+0) clone the repo and run `composer install`
+
+0b) You might need to run `sudo apt-get install php-pear php5-dev` to get pecl
 
 1) `sudo pecl install mongodb` (install OpenSSL if you don't have it, I ran `sudo apt-get install libcurl4-openssl-dev pkg-config` on Homestead)
+
+1b) I found that pecl was a jerk on my ubuntu machine. You can try running the same command with the `--nocompress` flag like so `sudo pecl install --nocompress mongodb`. My pecl was also complaining about needing another library to `make` the mongodb driver. I ran `sudo apt-get install libpcre3-dev` 
 
 2) Add `extension=mongodb.so` to your php.ini file
 
@@ -15,4 +21,3 @@ I used Homebrew as means to install/develop this application. I'm going to grace
 5) update the package database `sudo apt-get update`
 
 6) install mongodb `sudo apt-get install -y mongodb-org`
-

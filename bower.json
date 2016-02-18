@@ -1,0 +1,24 @@
+{
+  "name": "HAprogcha",
+  "description": "",
+  "main": "public/",
+  "authors": [
+    "Jordan Lovato <jordanlovato@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jordanlovato/HAprogcha",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.5.0",
+    "jquery": "~2.2.0"
+  }
+}
