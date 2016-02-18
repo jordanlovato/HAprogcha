@@ -21,3 +21,9 @@ I used Homestead as means to install/develop this application. I'm going to eage
 5) update the package database `sudo apt-get update`
 
 6) install mongodb `sudo apt-get install -y mongodb-org`
+
+
+##Tips##
+* You might need to create a `.env` file in your project directory. Use the `.env.example` file as a base and delete all database information (or supply it if your mongodb requires auth).
+
+* Speaking of Auth, if your mongodb requires auth, you probably should also update `config/database.php` file.
